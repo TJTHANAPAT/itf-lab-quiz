@@ -13,19 +13,19 @@
         <form action="insert.php" method="post" class="form-dark mt-4">
             <div class="form-group">
                 <label for="inputName">NAME</label>
-                <input type="text" name="name" id="inputName" class="form-control" placeholder="Enter your name">
+                <input type="text" name="name" id="inputName" class="form-control" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
-                <label for="inputHeight">HEIGHT</label>
-                <input type="number" name="height" id="inputHeight" class="form-control" placeholder="Enter your height">
+                <label for="inputHeight">HEIGHT (cm)</label>
+                <input type="number" step="0.01" name="height" id="inputHeight" class="form-control" placeholder="Enter your height" required>
             </div>
             <div class="form-group">
-                <label for="inputWeight">WEIGHT</label>
-                <input type="number" name="weight" id="inputWeight" class="form-control" placeholder="Enter your weight">
+                <label for="inputWeight">WEIGHT (kg)</label>
+                <input type="number" step="0.01" name="weight" id="inputWeight" class="form-control" placeholder="Enter your weight" required>
             </div>
             <div class="mt-4">
                 <button type="submit" class="btn btn-outline-orange mr-1">Add</button>
-                <a role="button" class="btn btn-outline-secondary" href="guestbook.php">Back</a>
+                <a role="button" class="btn btn-outline-secondary" href="bmi_records.php">Back</a>
             </div>
         </form>
     </div>
