@@ -16,30 +16,28 @@ if (!$conn)
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 
-$ID = $_POST['ID'];
-$sql = "SELECT * FROM guestbook WHERE ID='$ID'";
+$id = $_POST['id'];
+$sql = "SELECT * FROM bmi_records WHERE id='$id'";
 $res = mysqli_query($conn, $sql);
-$comment = mysqli_fetch_array($res);
+$record = mysqli_fetch_array($res);
 ?>
     <div class="container-form">
-        <h1>Edit Comment</h1>
+        <h1>Edit Record</h1>
         <form action="update.php" method="post" class="form-dark mt-4">
-            <input type="hidden" name="ID" value=<?php echo $comment['ID'];?>>
+            <input type="hidden" name="id" value=<?php echo $record['id'];?>>
             <div class="form-group">
                 <label for="inputName">NAME</label>
                 <?php
-                    echo '<input type="text" name="name" id="inputName" class="form-control" placeholder="Enter Name" value="'.$comment["Name"].'">'
+                    echo '<input type="text" name="name" id="inputName" class="form-control" placeholder="Enter your name" value="'.$record["name"].'" disabled>';
                 ?>
             </div>
             <div class="form-group">
-                <label for="inputComment">COMMENT</label>
-                <textarea name="comment" class="form-control" id="inputComment" rows="3" placeholder="Enter Comment"><?php echo $comment['Comment'];?></textarea>
+                <label for="inputHeight">HEIGHT (cm)</label>
+                <input type="number" step="0.01" name="height" id="inputHeight" class="form-control" placeholder="Enter your height" required value="<?php echo $record["height"]; ?>">
             </div>
             <div class="form-group">
-                <label for="inputLink">LINK</label>
-                <?php
-                    echo '<input type="text" name="link" id="inputLink" class="form-control" placeholder="Enter Name" value="'.$comment["Link"].'">'
-                ?>
+                <label for="inputWeight">WEIGHT (kg)</label>
+                <input type="number" step="0.01" name="weight" id="inputWeight" class="form-control" placeholder="Enter your weight" required value="<?php echo $record["weight"]; ?>">
             </div>
             <div class="mt-4">
                 <button type="submit" class="btn btn-outline-orange mr-1">Save</button>

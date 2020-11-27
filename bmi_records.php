@@ -15,16 +15,17 @@ if (!$conn)
 {
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
-$res = mysqli_query($conn, 'SELECT * FROM guestbook');
+$res = mysqli_query($conn, 'SELECT * FROM bmi_records');
 ?>
 <div class="container-fluid">
-    <h1>Guestbook</h1>
+    <h1>BMI Records</h1>
     <table class="table table-responsive-md table-hover table-dark mt-4">
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Comment</th>
-                <th scope="col">Link</th>
+                <th scope="col">Weight (kg)</th>
+                <th scope="col">Height (cm)</th>
+                <th scope="col">BMI</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -34,17 +35,18 @@ while($row = mysqli_fetch_array($res))
 ?>
         <tbody>
             <tr>
-                <td><?php echo $row['Name'];?></div></td>
-                <td><?php echo $row['Comment'];?></td>
-                <td><?php echo $row['Link'];?></td>
+                <td><?php echo $row['name'];?></div></td>
+                <td><?php echo $row['height'];?></td>
+                <td><?php echo $row['weight'];?></td>
+                <td><?php echo $row['bmi'];?></td>
                 <td>
                     <div>
                         <form action="edit_form.php" method="post" class="d-inline">
-                            <input type="hidden" name="ID" value=<?php echo $row['ID'];?>>
+                            <input type="hidden" name="id" value=<?php echo $row['id'];?>>
                             <button type="submit" class="btn btn-sm btn-outline-orange btn-comment-action">Edit</button>
                         </form>
                         <form action="delete.php" method="post" class="d-inline">
-                            <input type="hidden" name="ID" value=<?php echo $row['ID'];?>>
+                            <input type="hidden" name="id" value=<?php echo $row['id'];?>>
                             <button type="submit" class="btn btn-sm btn-outline-danger btn-comment-action">Delete</button>
                         </form>
                     </div>

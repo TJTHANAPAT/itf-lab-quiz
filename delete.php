@@ -16,14 +16,14 @@ if (!$conn)
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 
-$ID = $_POST['ID'];
-$sql = "DELETE FROM guestbook WHERE ID='$ID'";
+$id = $_POST['id'];
+$sql = "DELETE FROM bmi_records WHERE id='$id'";
 
 if (mysqli_query($conn, $sql)) {
     echo '<div class="container-message-box text-center">
             <span class="icon">✓</span>
-            <h4 style="color:#fff">Comment has been deleted succussfully.</h4>
-            <a role="button" class="btn btn-outline-orange mt-3" href="guestbook.php">Home</a>
+            <h4 style="color:#fff">Record has been deleted succussfully.</h4>
+            <a role="button" class="btn btn-outline-orange mt-3" href="bmi_records.php">Home</a>
          </div>';
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

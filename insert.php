@@ -20,14 +20,14 @@ $name = $_POST['name'];
 $height = $_POST['height']; // height in cm unit
 $weight = $_POST['weight']; // weight in kg unit
 $bmi = $weight/(($height/100)**2);
-// echo 'BMI: '.$bmi;
+
 $sql = "INSERT INTO bmi_records (name, height, weight, bmi) VALUES ('$name', '$height', '$weight', '$bmi')";
 
 if (mysqli_query($conn, $sql)) {
     echo '<div class="container-message-box text-center">
             <span class="icon">✓</span>
-            <h4 style="color:#fff">Your BMI is'.$bmi.'</h4>
-            <a role="button" class="btn btn-outline-orange mt-3" href="guestbook.php">Home</a>
+            <h4 style="color:#fff">Your BMI is '.$bmi.'.</h4>
+            <a role="button" class="btn btn-outline-orange mt-3" href="bmi_records.php">Home</a>
          </div>';
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

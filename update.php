@@ -16,17 +16,17 @@ if (!$conn)
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 
-$ID = $_POST['ID'];
-$name = $_POST['name'];
-$text = $_POST['comment'];
-$link = $_POST['link'];
-$sql = "UPDATE guestbook SET Name='$name', Comment='$text', Link='$link' WHERE ID='$ID'";
+$id = $_POST['id'];
+$height = $_POST['height']; // height in cm unit
+$weight = $_POST['weight']; // weight in kg unit
+$bmi = $weight/(($height/100)**2);
+$sql = "UPDATE bmi_records SET height='$height', weight='$weight', bmi='$bmi' WHERE id='$id'";
 
 if (mysqli_query($conn, $sql)) {
     echo '<div class="container-message-box text-center">
             <span class="icon">✓</span>
-            <h4 style="color:#fff">Comment has been updated successfully.</h4>
-            <a role="button" class="btn btn-outline-orange mt-3" href="guestbook.php">Home</a>
+            <h4 style="color:#fff">Record has been updated successfully. Your new BMI is '.$bmi.'.</h4>
+            <a role="button" class="btn btn-outline-orange mt-3" href="bmi_records.php">Home</a>
          </div>';
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
